@@ -6,15 +6,25 @@ const historyBtn = document.querySelector('.history');
 const stopwatch = document.querySelector('.stopwatch');
 const time = document.querySelector('.time');
 const timeList = document.querySelector('.time-list');
-const infoBtn = document.querySelector('.info');
+
+const infoBtn = document.querySelector('.fa-question');
 const modalShadow = document.querySelector('.modal-shadow');
 const closeModalBtn = document.querySelector('.close');
+
 
 let timesArr = [];
 
 let countTime;
 let minutes = 0;
 let seconds = 0;
+
+// zmiana kolorów
+const colorBtn = document.querySelector('.fa-paint-brush');
+const colorPanel = document.querySelector('.colors');
+const colorOne = document.querySelector('.one');
+const colorTwo = document.querySelector('.two');
+const colorThree = document.querySelector('.three');
+let root = document.documentElement;
 
 const handleStart = () => {
 	clearInterval(countTime);
@@ -96,4 +106,24 @@ historyBtn.addEventListener('click', showHistory);
 
 infoBtn.addEventListener('click', showModal)
 closeModalBtn.addEventListener('click', showModal)
-window.addEventListener('click', e => e.target === modalShadow ? showModal() : false)
+window.addEventListener('click', e => e.target === modalShadow ? showModal() : false);
+
+// zmiana kolorów
+colorBtn.addEventListener('click', () => {
+    colorPanel.classList.toggle('show-colors')
+})
+
+colorOne.addEventListener('click', () => {
+    root.style.setProperty('--first-color', 'rgb(250, 20, 6)');
+    root.style.setProperty('--hover-color', 'rgb(209, 33, 24)');
+});
+
+colorTwo.addEventListener('click', () => {
+    root.style.setProperty('--first-color', 'rgb(6, 173, 250)');
+    root.style.setProperty('--hover-color', 'rgb(28, 145, 199)');
+});
+
+colorThree.addEventListener('click', () => {
+    root.style.setProperty('--first-color', 'rgb(0, 255, 42)');
+    root.style.setProperty('--hover-color', 'rgb(28, 209, 58)');
+});
